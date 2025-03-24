@@ -15,7 +15,7 @@ export async function deleteReviewAction(_: any, formData: FormData) {
 
   try {
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_SERVER_URL}/review/${reviewId}`,
+      `${process.env.NEXT_PUBLIC_API_SERVER_URL}/review/${reviewId}`,
       { method: "DELETE" }
     );
 

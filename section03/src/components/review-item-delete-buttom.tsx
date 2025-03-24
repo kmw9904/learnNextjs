@@ -10,7 +10,7 @@ export default function ReviewItemDeleteButton({
   reviewId: number;
   bookId: number;
 }) {
-  const fromRef = useRef<HTMLFormElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
   const [state, fromAction, isPending] = useActionState(
     deleteReviewAction,
@@ -23,7 +23,7 @@ export default function ReviewItemDeleteButton({
     }
   }, [state]);
   return (
-    <form ref={fromRef} action={fromAction}>
+    <form ref={formRef} action={fromAction}>
       <input name="reviewId" value={reviewId} hidden readOnly />
       <input name="bookId" value={bookId} hidden readOnly />
       {isPending ? (
@@ -31,7 +31,7 @@ export default function ReviewItemDeleteButton({
       ) : (
         <div
           onClick={() => {
-            fromRef.current?.requestSubmit();
+            formRef.current?.requestSubmit();
           }}
         >
           삭제하기
